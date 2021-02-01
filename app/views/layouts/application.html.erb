@@ -1,15 +1,108 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>KiIchi</title>
+    <title>木一 | 本棚から始まる豊かな世界</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!-- fontawesomeのアカウント登録 -->
+    <script src="https://kit.fontawesome.com/1d3c4dc6a0.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <% if flash[:notice] %>
+      <div class="notification is-info">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <div class="notification is-danger">
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
+
+    <!-- navbar -->
+    <nav class="navbar is-warning">
+      <div class="navbar-brand">
+        <%= link_to root_path, class: "navbar-item" do %>
+          <h1 class="title is-4" style="font-family: Noto Sans JP;">木一</h1>
+        <% end %>
+
+        <!--あとで戻す-->
+        <% if false %>
+        <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <% end %>
+
+      </div>
+
+      <% if user_signed_in? %>
+        <div id="navbarExampleTransparentExample" class="navbar-menu">
+      
+          <!--あとで戻す-->
+          <% if false %>
+          <div class="navbar-item">
+            <%= link_to "レシピ一覧", recipes_path, class: "navbar-item button is-warning is-light" %>
+          </div>
+          <div class="navbar-item">
+            <%= link_to "レシピ投稿", new_recipe_path, class: "navbar-item button is-warning is-light" %>
+          </div>
+          <% end %>
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="field is-grouped">
+                <p class="control">
+                  <%= link_to "ユーザー一覧", users_path, class: " button is-warning is-light" %>
+                </p>
+                <p class="control">
+                  <%= link_to "マイページ", user_path(current_user), class: "button is-warning is-light" %>
+                </p>
+                <p class="control">
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button is-warning is-light" %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <% else %>
+      <!-- 非ログイン状態 -->
+
+        <div id="navbarExampleTransparentExample" class="navbar-menu">
+          <!--あとで戻す-->
+          <% if false %>
+          <div class="navbar-item">
+            <%= link_to "レシピ一覧", recipes_path, class: "navbar-item button is-warning is-light" %>
+          </div>
+          <div class="navbar-item">
+            <%= link_to "レシピグラマー一覧", users_path, class: "navbar-item button is-warning is-light" %>
+          </div>
+          <% end %>
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="field is-grouped">
+                <p class="control">
+                  <%= link_to "ログイン", new_user_session_path, class: "button is-warning is-light" %>
+                </p>
+                <p class="control">
+                  <%= link_to "新規登録", new_user_registration_path, class: "button is-warning is-light" %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </nav>
+    <!-- navbarおわり -->
+
     <%= yield %>
   </body>
 </html>
