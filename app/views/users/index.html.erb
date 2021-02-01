@@ -18,7 +18,9 @@
               <div class="card-image">
                 <figure class="image">
                   <%= link_to user_path(user) do %>
-                    <%= attachment_image_tag user, :profile_image, fallback: "no-image.png" %>
+                    <% if user.avatar.attached? %>
+                      <%= image_tag user.avatar %>
+                    <% end %>
                   <% end %>
                 </figure>
               </div>
