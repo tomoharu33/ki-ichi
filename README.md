@@ -1,24 +1,8 @@
-# README
+# 木一：ki-ichi
+* 本棚を中心に、コミュニティができる
+* 一本の木はコミュニティの象徴
+* "木" と "一"を合わせたら"本"になる
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 環境
+* ruby：2.7.2
+* rails：6.0.3
