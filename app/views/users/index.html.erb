@@ -16,7 +16,7 @@
           <div class="card">
             <div class="card-content">
               <div class="card-image">
-                <figure class="image profile-image">
+                <figure class="image avatar-image">
                   <%= link_to user_path(user) do %>
                     <% if user.avatar.attached? %>
                       <%= image_tag user.avatar %>
@@ -33,11 +33,7 @@
               </div>
               <div class="content">
                 投稿数：
-                <!--あとで戻す-->
-                <% if false %>
-                    <%= user.recipes.count %>
-                <% end %>
-
+                <%= user.books.count %>
               </div>
             </div>
           </div>

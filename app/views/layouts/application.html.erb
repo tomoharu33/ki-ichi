@@ -31,29 +31,25 @@
           <h1 class="title is-4" style="font-family: Noto Sans JP;">木一</h1>
         <% end %>
 
-        <!--あとで戻す-->
-        <% if false %>
         <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
           <span></span>
           <span></span>
           <span></span>
         </div>
-        <% end %>
 
       </div>
 
+      <!-- ログイン -->
       <% if user_signed_in? %>
         <div id="navbarExampleTransparentExample" class="navbar-menu">
-      
-          <!--あとで戻す-->
-          <% if false %>
+
           <div class="navbar-item">
-            <%= link_to "レシピ一覧", recipes_path, class: "navbar-item button is-warning is-light" %>
+            <%= link_to "本一覧", books_path, class: "navbar-item button is-warning is-light" %>
           </div>
+
           <div class="navbar-item">
-            <%= link_to "レシピ投稿", new_recipe_path, class: "navbar-item button is-warning is-light" %>
+            <%= link_to "本投稿", new_book_path, class: "navbar-item button is-warning is-light" %>
           </div>
-          <% end %>
 
           <div class="navbar-end">
             <div class="navbar-item">
@@ -70,21 +66,20 @@
               </div>
             </div>
           </div>
+
         </div>
 
+      <!-- 非ログイン -->
       <% else %>
-      <!-- 非ログイン状態 -->
-
         <div id="navbarExampleTransparentExample" class="navbar-menu">
-          <!--あとで戻す-->
-          <% if false %>
+
           <div class="navbar-item">
-            <%= link_to "レシピ一覧", recipes_path, class: "navbar-item button is-warning is-light" %>
+            <%= link_to "本一覧", books_path, class: "navbar-item button is-warning is-light" %>
           </div>
+
           <div class="navbar-item">
-            <%= link_to "レシピグラマー一覧", users_path, class: "navbar-item button is-warning is-light" %>
+            <%= link_to "ユーザー一覧", users_path, class: "navbar-item button is-warning is-light" %>
           </div>
-          <% end %>
 
           <div class="navbar-end">
             <div class="navbar-item">
@@ -98,10 +93,11 @@
               </div>
             </div>
           </div>
+          
         </div>
       <% end %>
+
     </nav>
-    <!-- navbarおわり -->
 
     <%= yield %>
   </body>

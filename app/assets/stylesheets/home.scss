@@ -1,3 +1,7 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.main-image {
+	height: 940px;
+	background-image: url(image_bookshelf.jpg);
+	// background-repeat: no-repeat;
+	background-size: contain;
+	opacity: 0.8;
+}
