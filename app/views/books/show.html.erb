@@ -24,19 +24,6 @@
             <div class="media">
               <div class="media-content">
                 <p class="title is-4"><%= @book.title %></p>
-                <div>
-                  <% if current_user.already_favorited?(@book) %>
-                    <%= link_to book_favorites_path(@book), method: :delete do %>
-                      <i class="fas fa-heart"></i>
-                    <% end %>
-                    <%= @book.favorites.count %>
-                  <% else %>
-                    <%= link_to book_favorites_path(@book), method: :post do %>
-                      <i class="far fa-heart"></i>
-                    <% end %>
-                    <%= @book.favorites.count %>
-                  <% end %>
-                </div>
               </div>
             </div>
             <div class="content">
