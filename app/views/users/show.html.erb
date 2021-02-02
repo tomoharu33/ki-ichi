@@ -69,10 +69,7 @@
               <div class="media">
                 <div class="media-content">
                   <%= link_to book_path(book), class: "panel-block" do %>
-                    <span class="panel-icon">
-                      <i class="fas fa-book" aria-hidden="true"></i>
-                    </span>
-                    この本を見る
+                    <strong class="is-size-4"><%= book.title %></strong>
                   <% end %>
                   <% if @user.id == current_user.id %>
                     <%= link_to edit_book_path(book), class: "panel-block" do %>
