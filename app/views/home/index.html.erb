@@ -5,7 +5,46 @@
         <p>
           <strong class="is-size-1 custom-black" style="font-family: Noto Sans JP;">木一</strong>
         </p>
+        <p>
+          <strong class="is-size-4 custom-gray">本棚から始まる豊かな世界</strong>
+        </p>
       </div>
+
+      <% if user_signed_in? %>
+      <!-- ログイン時 -->
+
+      <div class="container">
+        <div class="columns is-multiline">
+          <% @users.each do |user| %>
+            <div class="column is-3">
+              <div class="card">
+                <div class="card-content">
+                  <div class="card-image">
+                    <figure class="image">
+                      <%= link_to user_path(user) do %>
+                        <% if user.avatar.attached? %>
+                          <%= image_tag user.avatar %>
+                        <% end %>
+                      <% end %>
+                    </figure>
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <div class="title"><%=link_to user.name, user_path(user) %></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <% else %>
+      <!-- 非ログイン時 -->
+
       <div class="columns is-centered">
         <div class="column is-5">
           <br>
@@ -14,7 +53,12 @@
           <%= link_to "新規登録", new_user_registration_path, class: "button is-warning is-fullwidth" %>
         </div>
       </div>
+      
+      <% end %>
+
     </div>
   </article>
   <br>
 </section>
+
+
