@@ -8,19 +8,7 @@
   </div>
 </section>
 
-<!--あとで戻す-->
-<% if false %>
-  <% if @user.errors.any? %>
-    <div class="notification is-danger">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this object from being saved: not successfully</h2>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-<% end %>
+<%= render 'errors', user: @user %>
 
 <section class="section">
   <div class="container">
