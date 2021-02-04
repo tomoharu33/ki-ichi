@@ -13,8 +13,7 @@ section.section
               .card-image
                 figure.image.avatar-image
                   = link_to user_path(user) do
-                    - if user.avatar.attached?
-                      = image_tag user.avatar
+                    = render 'shared/user_image', user: user
             .card-content
               .media
                 .media-content
