@@ -36,8 +36,7 @@ section.section
             .card-image
               figure.image.is-4by3
                 = link_to book_path(book) do
-                  - if book.book_image.attached?
-                    = image_tag book.book_image
+                  = render 'shared/book_image', book: book
             .card-content
               .media
                 .media-content
