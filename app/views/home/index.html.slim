@@ -1,0 +1,42 @@
+section.section.main-image
+  article.media
+    .media-content
+      .content.has-text-centered
+        p
+          strong.is-size-1.custom-black[style="font-family: Noto Sans JP;"]
+            | 木一
+        p
+          strong.is-size-4.custom-gray
+            | 本棚から始まる豊かな世界
+      - if user_signed_in?
+        .container.mt-6
+          .columns.is-multiline
+            - @books.each do |book|
+              .column.is-4
+                .card
+                  .card-image
+                    figure.image.is-4by3
+                      = link_to book_path(book) do
+                        - if book.book_image.attached?
+                          = image_tag book.book_image
+                  .card-content
+                    .media
+                      .media-left
+                        figure.image.is-48x48
+                          - if book.book_image.attached?
+                            = image_tag book.book_image
+                      .media-content
+                        .title
+                          = link_to book.title, book_path(book)
+                    .content
+                      time
+                        = book.updated_at.strftime("%Y-%m-%d %H:%M")
+                      | 更新 
+      - else
+        .columns.is-centered
+          .column.is-5
+            br
+            = link_to "ログイン", new_user_session_path, class: "button is-warning is-fullwidth"
+            br
+            = link_to "新規登録", new_user_registration_path, class: "button is-warning is-fullwidth"
+  br

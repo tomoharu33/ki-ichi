@@ -1,0 +1,29 @@
+section.hero.is-success
+  .hero-body
+    .container
+      h1.title
+        |  本一覧 
+section.section
+  .container
+    .columns.is-multiline
+      - @books.each do |book|
+        .column.is-4
+          .card
+            .card-image
+              figure.image.is-4by3
+                = link_to book_path(book) do
+                  - if book.book_image.attached?
+                    = image_tag book.book_image
+            .card-content
+              .media
+                .media-left
+                  figure.image.is-48x48
+                    - if book.book_image.attached?
+                      = image_tag book.book_image
+                .media-content
+                  .title
+                    = link_to book.title, book_path(book)
+              .content
+                time
+                  = book.updated_at.strftime("%Y-%m-%d %H:%M")
+                | 更新 

@@ -1,0 +1,11 @@
+section.hero.is-success
+  .hero-body
+    .container
+      h1.title
+        |  ユーザー編集 
+= render 'errors', user: @user
+section.section
+  .container
+    .columns.is-centered
+      .column.is-6
+        = render 'form', user: @user

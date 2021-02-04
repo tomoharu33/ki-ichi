@@ -1,0 +1,9 @@
+- if book.errors.any?
+  .notification.is-danger
+    h2
+      = pluralize(book.errors.count, "error")
+      |  prohibited this object from being saved: not successfully
+    ul
+      - book.errors.full_messages.each do |message|
+        li
+          = message
