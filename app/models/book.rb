@@ -12,4 +12,9 @@
 class Book < ApplicationRecord
   belongs_to :user
   has_one_attached :book_image
+
+  with_options presence: true do
+    validates :title
+    validates :body
+  end
 end
