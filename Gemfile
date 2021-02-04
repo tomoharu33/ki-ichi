@@ -37,3 +37,6 @@ gem 'bulma-rails'
 
 gem 'mini_magick'
 gem 'aws-sdk-s3', require: false
+
+gem 'slim-rails'
+gem 'html2slim'

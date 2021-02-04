@@ -1,0 +1,9 @@
+- if model.errors.any?
+  .notification.is-danger
+    h2
+      = pluralize(model.errors.count, "error")
+      |  prohibited this object from being saved: not successfully
+    ul
+      - model.errors.full_messages.each do |message|
+        li
+          = message

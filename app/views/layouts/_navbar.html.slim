@@ -1,0 +1,37 @@
+nav.navbar.is-warning
+  .navbar-brand
+    = link_to root_path, class: "navbar-item" do
+      h1.title.is-4[style="font-family: Noto Sans JP;"]
+        | 木一
+    .navbar-burger.burger[data-target="navbarExampleTransparentExample"]
+      span
+      span
+      span
+  - if user_signed_in?
+    #navbarExampleTransparentExample.navbar-menu
+      .navbar-item
+        = link_to "本一覧", books_path, class: "navbar-item button is-warning is-light"
+      .navbar-item
+        = link_to "本投稿", new_book_path, class: "navbar-item button is-warning is-light"
+      .navbar-end
+        .navbar-item
+          .field.is-grouped
+            p.control
+              = link_to "ユーザー一覧", users_path, class: " button is-warning is-light"
+            p.control
+              = link_to "マイページ", user_path(current_user), class: "button is-warning is-light"
+            p.control
+              = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button is-warning is-light"
+  - else
+    #navbarExampleTransparentExample.navbar-menu
+      .navbar-item
+        = link_to "本一覧", books_path, class: "navbar-item button is-warning is-light"
+      .navbar-item
+        = link_to "ユーザー一覧", users_path, class: "navbar-item button is-warning is-light"
+      .navbar-end
+        .navbar-item
+          .field.is-grouped
+            p.control
+              = link_to "ログイン", new_user_session_path, class: "button is-warning is-light"
+            p.control
+              = link_to "新規登録", new_user_registration_path, class: "button is-warning is-light"

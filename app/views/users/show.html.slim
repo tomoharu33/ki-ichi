@@ -1,0 +1,57 @@
+section.hero.is-success
+  .hero-body
+    .container
+      h1.title
+        |  マイページ 
+section.section
+  .container
+    .columns.is-centered
+      .column.is-8
+        .columns.is-centered
+          .column.is-4
+            figure.image.is-128x128[style="margin-left: auto; margin-right: auto;"]
+              = render 'shared/user_image', user: @user
+          .column.is-8
+            table.table.is-fullwidth
+              tr
+                td.is-size-4
+                  strong
+                    = @user.name
+                - if @user.id == current_user.id
+                  td.is-size-4
+                    = @user.email
+                  td
+                    = link_to "編集", edit_user_path(@user), class: "button is-primary"
+            table.table.is-fullwidth
+              tr
+                td
+                  = @user.profile
+section.section
+  .container
+    .columns.is-multiline
+      - @user.books.each do |book|
+        .column.is-4
+          .card
+            .card-image
+              figure.image.is-4by3
+                = link_to book_path(book) do
+                  = render 'shared/book_image', book: book
+            .card-content
+              .media
+                .media-content
+                  = link_to book_path(book), class: "panel-block" do
+                    strong.is-size-4
+                      = book.title
+                  - if @user.id == current_user.id
+                    = link_to edit_book_path(book), class: "panel-block" do
+                      span.panel-icon
+                        i.fas.fa-edit
+                      |  この本を編集する 
+                    = link_to book_path(book), method: :delete, data: {confirm: "削除しますか？"}, class: "panel-block" do
+                      span.panel-icon
+                        i.fas.fa-trash
+                      |  この本を削除する 
+              .content
+                time
+                  = book.updated_at.strftime("%Y-%m-%d %H:%M")
+                | 更新 

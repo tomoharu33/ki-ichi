@@ -1,0 +1,41 @@
+section.hero.is-success
+  .hero-body
+    .container
+      h1.title
+        |  本の内容 
+section.section
+  .container
+    .columns.is-centered
+      .column.is-7
+        .card
+          .card-image
+            figure.image.is-4by3
+              = render 'shared/book_image', book: @book
+          .card-content
+            .media
+              .media-content
+                p.title.is-4
+                  = @book.title
+            .content
+              table.table.is-narrow
+                tr
+                  th
+                    | 内容
+                tr
+                  td
+                    = simple_format @book.body
+              - if @book.user.id == current_user.id
+                = link_to "編集画面へ", edit_book_path(@book), class: "button is-success"
+      .column.is-4
+        article.panel.is-link
+          p.panel-heading
+            |  By 
+            = @book.user.name
+          .panel-block
+            p.control
+              = @book.user.profile
+          = link_to user_path(@book.user), class: "panel-block" do
+            span.panel-icon
+              i.fas.fa-user[aria-hidden="true"]
+            = @book.user.name
+            |  さんのページへ 
