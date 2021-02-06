@@ -25,6 +25,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one_attached :avatar
   has_many :books, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   with_options presence: true do
     validates :name

@@ -1,18 +1,16 @@
 # == Schema Information
 #
-# Table name: books
+# Table name: favorites
 #
 #  id         :bigint           not null, primary key
-#  body       :text
-#  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  book_id    :integer
 #  user_id    :integer
 #
-require 'test_helper'
+class Favorite < ApplicationRecord
+  belongs_to :user
+  belongs_to :book
 
-class BookTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  validates_uniqueness_of :book_id, scope: :user_id
 end
