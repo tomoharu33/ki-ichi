@@ -16,6 +16,7 @@ section.section
               .media-content
                 p.title.is-4
                   = @book.title
+                  = render 'shared/favorite', book: @book
             .content
               table.table.is-narrow
                 tr
