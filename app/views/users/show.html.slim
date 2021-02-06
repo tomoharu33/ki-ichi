@@ -39,9 +39,9 @@ section.section
             .card-content
               .media
                 .media-content
-                  = link_to book_path(book), class: "panel-block" do
-                    strong.is-size-4
-                      = book.title
+                  p.title.is-size-4
+                    = link_to book.title, book_path(book)
+                    = render 'shared/favorite', book: book
                   - if @user.id == current_user.id
                     = link_to edit_book_path(book), class: "panel-block" do
                       span.panel-icon

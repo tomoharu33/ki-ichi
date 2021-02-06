@@ -3,12 +3,12 @@ nav.navbar.is-warning
     = link_to root_path, class: "navbar-item" do
       h1.title.is-4[style="font-family: Noto Sans JP;"]
         | 木一
-    .navbar-burger.burger[data-target="navbarExampleTransparentExample"]
+    .navbar-burger.burger[data-target="navbarMenu"]
       span
       span
       span
   - if user_signed_in?
-    #navbarExampleTransparentExample.navbar-menu
+    #navbarMenu.navbar-menu
       .navbar-item
         = link_to "本一覧", books_path, class: "navbar-item button is-warning is-light"
       .navbar-item
@@ -23,7 +23,7 @@ nav.navbar.is-warning
             p.control
               = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button is-warning is-light"
   - else
-    #navbarExampleTransparentExample.navbar-menu
+    #navbarMenu.navbar-menu
       .navbar-item
         = link_to "本一覧", books_path, class: "navbar-item button is-warning is-light"
       .navbar-item

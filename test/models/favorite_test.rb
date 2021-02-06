@@ -1,17 +1,16 @@
 # == Schema Information
 #
-# Table name: books
+# Table name: favorites
 #
 #  id         :bigint           not null, primary key
-#  body       :text
-#  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  book_id    :integer
 #  user_id    :integer
 #
 require 'test_helper'
 
-class BookTest < ActiveSupport::TestCase
+class FavoriteTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

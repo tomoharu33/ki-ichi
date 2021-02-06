@@ -11,8 +11,9 @@
             figure.image.is-48x48
               = render 'shared/book_image', book: book
           .media-content
-            .title
+            p.title.is-size-4
               = link_to book.title, book_path(book)
+              = render 'shared/favorite', book: book
         .content
           time
             = book.updated_at.strftime("%Y-%m-%d %H:%M")
