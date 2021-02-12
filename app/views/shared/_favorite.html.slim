@@ -1,9 +1,10 @@
 p.panel-icon
-  - if current_user.already_favorited?(book)
-    = link_to book_favorites_path(book), method: :delete do
-      i.fas.fa-heart
-        = book.favorites.count
-  - else
-    = link_to book_favorites_path(book), method: :post do
-      i.far.fa-heart
-        = book.favorites.count
+  - if current_user
+    - if current_user.already_favorited?(book)
+      = link_to book_favorites_path(book), method: :delete do
+        i.fas.fa-heart
+          = book.favorites.count
+    - else
+      = link_to book_favorites_path(book), method: :post do
+        i.far.fa-heart
+          = book.favorites.count
