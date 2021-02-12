@@ -8,3 +8,6 @@ p.panel-icon
       = link_to book_favorites_path(book), method: :post do
         i.far.fa-heart
           = book.favorites.count
+  - else
+    i.fas.fa-heart
+      = book.favorites.count
