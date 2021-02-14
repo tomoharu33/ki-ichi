@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :books do
     resource :favorites, only: [:create, :destroy]
   end
+  get 'search', to: "search#search"
 end

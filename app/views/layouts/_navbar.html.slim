@@ -13,11 +13,11 @@ nav.navbar.is-warning
         = link_to "本一覧", books_path, class: "navbar-item button is-warning is-light"
       .navbar-item
         = link_to "本投稿", new_book_path, class: "navbar-item button is-warning is-light"
+      .navbar-item
+        = link_to "本検索", search_path, class: "navbar-item button is-warning is-light"
       .navbar-end
         .navbar-item
           .field.is-grouped
-            p.control
-              = link_to "ユーザー一覧", users_path, class: " button is-warning is-light"
             p.control
               = link_to "マイページ", user_path(current_user), class: "button is-warning is-light"
             p.control
@@ -27,7 +27,7 @@ nav.navbar.is-warning
       .navbar-item
         = link_to "本一覧", books_path, class: "navbar-item button is-warning is-light"
       .navbar-item
-        = link_to "ユーザー一覧", users_path, class: "navbar-item button is-warning is-light"
+        = link_to "本検索", search_path, class: "navbar-item button is-warning is-light"
       .navbar-end
         .navbar-item
           .field.is-grouped
