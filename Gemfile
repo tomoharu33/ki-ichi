@@ -42,3 +42,4 @@ gem 'slim-rails'
 gem 'html2slim'
 
 gem 'googlebooks', '~> 0.0.9'
+gem 'kaminari', '~> 0.17.0'

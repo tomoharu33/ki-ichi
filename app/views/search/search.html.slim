@@ -30,3 +30,7 @@ section.section
                   = book.authors
                 td
                   = link_to "詳細", "", class: "button is-primary"
+  section.section
+    .container
+      .columns.is-centered
+        = paginate @books
