@@ -2,13 +2,14 @@ section.hero.is-success
   .hero-body
     .container
       h1.title
-        |  本検索
+        |  本の検索
 section.section
   .container
     .columns.is-centered
-      .field
-        = form_with url: search_path, method: :get, local: true do |f|
-          = f.text_field :keyword, placeholder: "本のタイトルを入力してください"
+      = form_with url: search_path, method: :get, local: true do |f|
+        .field
+          = f.label :name, "キーワード", class: "label"
+          = f.text_field :keyword
 
 - if @books
   section.section
@@ -20,13 +21,12 @@ section.section
             - book.image_link.nil? ? image_link = 'https://books.google.com/books/content?id=p1-htgAACAAJ&printsec=frontcover&img=1&zoom=6&source=gbs_api' : image_link = book.image_link
             img alt="bookimage" height="128px" src=image_link width="102px"
         .column.is-8
-          .columns.is-centered
-            table.table.is-fullwidth
-              tr
+          table.table.is-fullwidth
+            tr
+              td.is-size-4
+                strong
+                  = book.title.truncate(40) unless book.title.nil?
                 td.is-size-4
-                  strong
-                    = book.title.truncate(40) unless book.title.nil?
-                  td.is-size-4
-                    = book.authors
-                  td
-                    = link_to "詳細", "", class: "button is-primary"
+                  = book.authors
+                td
+                  = link_to "詳細", "", class: "button is-primary"
