@@ -2,35 +2,72 @@ section.hero.is-success
   .hero-body
     .container
       h1.title
-        |  本の検索
-section.section
-  .container
-    .columns.is-centered
-      = form_with url: search_path, method: :get, local: true do |f|
-        .field
-          = f.label :name, "キーワード", class: "label"
-          = f.text_field :keyword
+        - if @book
+          |  本の詳細
+        - else
+          |  本の検索
 
-- if @books
+- if @book
   section.section
-  - @books.each do |book|
     .container
       .columns.is-centered
-        .column.is-4
-          figure.image.image.is-128x128[style="margin-left: auto; margin-right: auto;"]
-            - book.image_link.nil? ? image_link = 'https://books.google.com/books/content?id=p1-htgAACAAJ&printsec=frontcover&img=1&zoom=6&source=gbs_api' : image_link = book.image_link
-            img alt="bookimage" height="128px" src=image_link width="102px"
-        .column.is-8
-          table.table.is-fullwidth
-            tr
-              td.is-size-4
-                strong
-                  = book.title.truncate(40) unless book.title.nil?
+        .column.is-7
+          .card
+            .card-image
+              figure.image.is-4by3
+                - @book.image_link.nil? ? image_link = 'https://books.google.com/books/content?id=p1-htgAACAAJ&printsec=frontcover&img=1&zoom=6&source=gbs_api' : image_link = @book.image_link
+                img alt="bookimage" height="128px" src=image_link width="102px"
+            .card-content
+              .media
+                .media-content
+                  p.title.is-4
+                    = @book.title.truncate(40) unless @book.title.nil?
+                    span
+                      | （著者：
+                      = @book.authors
+                      | ）
+              .content
+                table.table.is-narrow
+                  tr
+                    th
+                      | 内容
+                  tr
+                    td
+                      = simple_format @book.description
+              = form_with url: search_path do |f|
+                = f.hidden_field :title, :value => @book.title
+                = f.hidden_field :body, :value => @book.description
+                / = f.hidden_field :book_image, :value => @book.image_link.nil? ? 'https://books.google.com/books/content?id=p1-htgAACAAJ&printsec=frontcover&img=1&zoom=6&source=gbs_api' : @book.image_link
+                = f.submit '登録', class: "button is-success"
+- else
+  section.section
+    .container
+      .columns.is-centered
+        = form_with url: search_path, method: :get, local: true do |f|
+          .field
+            = f.label :name, "キーワード", class: "label"
+            = f.text_field :keyword, class: "input"
+  section.section
+  - if @books
+    - @books.each do |book|
+      .container
+        .columns.is-centered
+          .column.is-4
+            figure.image.image.is-128x128[style="margin-left: auto; margin-right: auto;"]
+              - book.image_link.nil? ? image_link = 'https://books.google.com/books/content?id=p1-htgAACAAJ&printsec=frontcover&img=1&zoom=6&source=gbs_api' : image_link = book.image_link
+              img alt="bookimage" height="128px" src=image_link width="102px"
+          .column.is-8
+            table.table.is-fullwidth
+              tr
                 td.is-size-4
-                  = book.authors
-                td
-                  = link_to "詳細", "", class: "button is-primary"
-  section.section
-    .container
-      .columns.is-centered
-        = paginate @books
+                  strong
+                    = book.title.truncate(40) unless book.title.nil?
+                  td.is-size-4
+                    = book.authors
+                  td
+                    = link_to "詳細", search_path(isbn: book.isbn), class: "button is-primary"
+    section.section
+      .container
+        .columns.is-centered
+          = paginate @books
+
