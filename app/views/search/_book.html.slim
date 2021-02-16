@@ -24,8 +24,11 @@ section.section
                 tr
                   td
                     = simple_format book.description
-            = form_with url: search_path do |f|
-              = f.hidden_field :title, :value => book.title
-              = f.hidden_field :body, :value => book.description
-              / = f.hidden_field :book_image, :value => book.image_link.nil? ? 'https://books.google.com/books/content?id=p1-htgAACAAJ&printsec=frontcover&img=1&zoom=6&source=gbs_api' : book.image_link
-              = f.submit '登録', class: "button is-success"
+            - if user_signed_in?
+              = form_with url: search_path do |f|
+                = f.hidden_field :title, :value => book.title
+                = f.hidden_field :body, :value => book.description
+                / = f.hidden_field :book_image, :value => book.image_link.nil? ? 'https://books.google.com/books/content?id=p1-htgAACAAJ&printsec=frontcover&img=1&zoom=6&source=gbs_api' : book.image_link
+                = f.submit '登録', class: "button is-success"
+            - else
+              = link_to "戻る", :back, class: "button is-success"
