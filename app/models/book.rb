@@ -16,6 +16,7 @@ class Book < ApplicationRecord
 
   with_options presence: true do
     validates :title
-    validates :body
+    # API経由で登録する際に、bodyがnullの場合があるため、validationを解除する
+    # validates :body
   end
 end

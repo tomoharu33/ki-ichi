@@ -5,8 +5,8 @@ class SearchController < ApplicationController
     if @keyword = params[:keyword]
       @books = GoogleBooks.search(@keyword, {:count => 20}).to_a
       @books = Kaminari.paginate_array(@books).page(params[:page]).per(10)
-    elsif @isbn = params[:isbn]
-      @book = GoogleBooks.search(@isbn).first
+    elsif @id = params[:id]
+      @book = GoogleBooks.search(@id).first
     end
   end
   
